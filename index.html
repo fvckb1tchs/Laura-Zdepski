@@ -1,84 +1,315 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Laura Linda do olho AZULL</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Para o amor da minha vida 💐</title>
 <style>
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        font-family: Arial, sans-serif;
-        background-color: white;
-        text-align: center;
-        margin: 0;
-    }
-    .vermelho {
-        color: red;
-        font-weight: bold;
-    }
-    .botoes {
-        display: flex;
-        gap: 20px; /* espaço inicial entre os botões */
-        margin-top: 20px;
-        position: relative;
-    }
-    button {
-        padding: 12px 30px;
-        font-size: 16px;
-        cursor: pointer;
-        border: none;
-        border-radius: 8px;
-        background-color: black;
-        color: white;
-        transition: transform 0.2s ease, background-color 0.2s ease;
-    }
-    button:hover {
-        background-color: #333;
-        transform: scale(1.05);
-    }
-    #nao {
-        position: relative;
-    }
+  :root{
+    --bg1:#0f0f1a;
+    --bg2:#1a1a2e;
+    --accent:#ff477e;
+    --accent2:#ffd166;
+    --leaf:#2ecc71;
+    --stem:#1b8d4e;
+    --wrap:#f2f2f2cc;
+    --ribbon:#ff2d55;
+    --text:#ffffff;
+  }
+
+  /* Fundo com degradê e estrelas sutis */
+  body{
+    margin:0; min-height:100svh; display:flex; align-items:center; justify-content:center;
+    background: radial-gradient(1200px 600px at 50% 10%, #202044 0%, var(--bg2) 40%, var(--bg1) 100%);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+    color:var(--text);
+    overflow:hidden;
+  }
+  .stars::before, .stars::after{
+    content:"";
+    position:fixed; inset:0; pointer-events:none;
+    background:
+      radial-gradient(2px 2px at 10% 20%, #ffffff90 98%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 80% 10%, #ffffff80 98%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 70%, #ffffff70 98%, transparent 100%),
+      radial-gradient(2px 2px at 60% 50%, #ffffff60 98%, transparent 100%),
+      radial-gradient(1px 1px at 90% 80%, #ffffff70 98%, transparent 100%);
+    mix-blend-mode:screen;
+    animation: twinkle 6s linear infinite;
+  }
+  .stars::after{ animation-duration:9s; opacity:.6 }
+  @keyframes twinkle{
+    0%,100%{opacity:.5} 50%{opacity:1}
+  }
+
+  .card{
+    position:relative;
+    width:min(92vw, 920px);
+    aspect-ratio: 16/9;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 30px 80px #00000080, inset 0 0 0 1px #ffffff12;
+    display:grid; place-items:center;
+    background:
+      radial-gradient(900px 600px at 50% 120%, #2d1b4e 0%, #1a1a2e 50%, #121223 100%);
+  }
+
+  /* Texto superior */
+  header{
+    position:absolute; top:16px; left:20px; right:20px;
+    text-align:center; letter-spacing:.5px;
+    opacity:.9;
+  }
+  header h1{
+    margin:0; font-weight:800; font-size:clamp(20px, 3.3vw, 32px);
+  }
+  header p{
+    margin:6px 0 0; font-size:clamp(12px, 2vw, 16px);
+    opacity:.9
+  }
+
+  /* Botão */
+  .cta{
+    position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
+    display:inline-flex; gap:.6rem; align-items:center; border:none; cursor:pointer;
+    padding:12px 18px; border-radius:999px;
+    background:linear-gradient(135deg, #ff4d6d, #ff8fa3);
+    box-shadow:0 8px 24px #ff4d6d66, inset 0 0 0 1px #ffffff40;
+    color:white; font-weight:700; letter-spacing:.3px;
+    transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+  }
+  .cta:hover{ transform:translateX(-50%) translateY(-2px); box-shadow:0 12px 28px #ff4d6d88 }
+  .cta:active{ filter:brightness(.95); transform:translateX(-50%) translateY(0) }
+
+  /* Área do buquê */
+  .stage{
+    width:100%; height:100%;
+    display:grid; place-items:center;
+    position:relative;
+  }
+
+  svg{ width:min(86vw, 680px); height:auto; overflow:visible; }
+
+  /* Animações das flores */
+  .flower{ transform-origin:center; animation: sway 4s ease-in-out infinite; }
+  .flower:nth-of-type(2){ animation-duration:4.7s }
+  .flower:nth-of-type(3){ animation-duration:5.2s }
+  .petal{ opacity:0; transform-origin:center; animation: bloom .9s ease forwards; }
+  /* escalonar o bloom */
+  .f1 .petal{ animation-delay: .2s }
+  .f2 .petal{ animation-delay: .35s }
+  .f3 .petal{ animation-delay: .5s }
+
+  @keyframes bloom{
+    from{ transform:scale(.2) rotate(-25deg); opacity:0 }
+    to{ transform:scale(1) rotate(0); opacity:1 }
+  }
+  @keyframes sway{
+    0%,100%{ transform:rotate(-2deg) translateY(0) }
+    50%{ transform:rotate(2deg) translateY(-2px) }
+  }
+
+  /* Embalagem e laço */
+  .wrap{
+    filter: drop-shadow(0 6px 20px #00000080);
+    animation: popin .9s ease both .2s;
+  }
+  .ribbon{ transform-origin:center; animation: pulse 2.2s ease-in-out infinite .9s }
+  @keyframes pulse{
+    0%,100%{ transform:scale(1) } 50%{ transform:scale(1.04) }
+  }
+  @keyframes popin{
+    from{ transform: translateY(20px) scale(.95); opacity:0 }
+    to{ transform: translateY(0) scale(1); opacity:1 }
+  }
+
+  /* Mensagem oculta */
+  .message{
+    position:absolute; inset:auto 20px 72px 20px;
+    text-align:center; opacity:0; transform: translateY(10px) scale(.98);
+    transition: opacity .45s ease, transform .45s ease;
+    user-select:none;
+  }
+  .message h2{ margin:0; font-size:clamp(18px, 3vw, 28px) }
+  .message p{ margin:.4rem 0 0; opacity:.9; font-size:clamp(14px, 2.2vw, 18px) }
+
+  .show .message{ opacity:1; transform: translateY(0) scale(1) }
+
+  /* Pétalas caindo */
+  .petal-fall{
+    position:fixed; top:-10vh; width:12px; height:18px; border-radius:60% 60% 60% 0;
+    background: radial-gradient(circle at 30% 30%, #ffd1de 0%, #ff7aa2 60%, #ff477e 100%);
+    opacity:.95; transform: rotate(15deg);
+    filter: drop-shadow(0 2px 4px #00000066);
+    animation: fall linear forwards, spin ease-in-out infinite;
+  }
+  @keyframes fall{
+    to{ transform: translateY(120vh) rotate(15deg) }
+  }
+  @keyframes spin{
+    0%{ transform: rotate(10deg) }
+    50%{ transform: rotate(-25deg) }
+    100%{ transform: rotate(10deg) }
+  }
+
+  /* Tooltip mobile */
+  .hint{
+    position:absolute; top:56px; right:10px; font-size:12px; opacity:.7
+  }
+
+  /* Acessibilidade visual para foco via teclado */
+  .cta:focus-visible{
+    outline: 3px solid #fff; outline-offset:3px;
+  }
 </style>
 </head>
-<body>
+<body class="stars">
+  <div class="card" role="region" aria-label="Surpresa romântica com buquê de flores">
+    <header>
+      <h1>Para a minha futura esposa 💖</h1>
+      <p>Clique no botão (ou aperte a barra de espaço) para abrir o meu coração.</p>
+      <div class="hint">(som ligado opcional — não há áudio automático)</div>
+    </header>
 
-<h1><span class="vermelho">Laura Zdepski,</span> concorda que eu não sou estranho <span class="vermelho">?</span></h1>
+    <div class="stage">
+      <!-- Buquê em SVG (flores, folhas, embalagem e laço) -->
+      <svg viewBox="0 0 600 520" aria-hidden="true">
+        <!-- Hastes -->
+        <g id="stems" stroke="var(--stem)" stroke-width="6" stroke-linecap="round">
+          <path d="M290,270 C285,360 290,460 300,520"/>
+          <path d="M315,270 C320,360 315,460 305,520"/>
+          <path d="M265,270 C260,355 270,460 295,520"/>
+        </g>
 
-<div class="botoes">
-    <button id="sim">SIM</button>
-    <button id="nao">NÃO</button>
-</div>
+        <!-- Folhas -->
+        <g fill="url(#leafGrad)">
+          <path d="M250,330 C230,320 215,305 200,290 C230,300 250,305 270,310 Z"/>
+          <path d="M355,330 C380,320 395,305 410,290 C380,300 365,305 345,310 Z"/>
+          <path d="M295,370 C280,362 270,352 260,340 C280,350 295,352 315,355 Z"/>
+        </g>
+
+        <!-- Flores (três rosas) -->
+        <g class="flower f1" transform="translate(270,230)">
+          <circle class="petal" r="34" fill="url(#rose)"/>
+          <g class="petal">
+            <path d="M0,-30 C10,-40 30,-35 30,-10 C30,15 10,25 0,20 C-10,25 -30,15 -30,-10 C-30,-35 -10,-40 0,-30 Z"
+                  fill="url(#roseCenter)"/>
+          </g>
+        </g>
+
+        <g class="flower f2" transform="translate(330,210)">
+          <circle class="petal" r="28" fill="url(#rose)"/>
+          <g class="petal">
+            <path d="M0,-25 C10,-35 25,-30 25,-8 C25,12 10,20 0,16 C-10,20 -25,12 -25,-8 C-25,-30 -10,-35 0,-25 Z"
+                  fill="url(#roseCenter)"/>
+          </g>
+        </g>
+
+        <g class="flower f3" transform="translate(240,205)">
+          <circle class="petal" r="26" fill="url(#rose)"/>
+          <g class="petal">
+            <path d="M0,-24 C10,-34 24,-28 24,-8 C24,10 10,18 0,15 C-10,18 -24,10 -24,-8 C-24,-28 -10,-34 0,-24 Z"
+                  fill="url(#roseCenter)"/>
+          </g>
+        </g>
+
+        <!-- Embalagem -->
+        <g class="wrap">
+          <path d="M210,280 L390,280 L345,430 Q300,470 255,430 Z" fill="var(--wrap)" stroke="#ffffff22" stroke-width="2"/>
+          <!-- Laço -->
+          <g class="ribbon">
+            <ellipse cx="300" cy="405" rx="18" ry="10" fill="var(--ribbon)" />
+            <path d="M300,405 C330,390 360,390 380,410 C355,415 335,420 320,420 Z" fill="var(--ribbon)" opacity=".95"/>
+            <path d="M300,405 C270,390 240,390 220,410 C245,415 265,420 280,420 Z" fill="var(--ribbon)" opacity=".95"/>
+          </g>
+        </g>
+
+        <!-- Gradientes -->
+        <defs>
+          <radialGradient id="rose" cx="30%" cy="30%">
+            <stop offset="0%" stop-color="#ffd1de"/>
+            <stop offset="60%" stop-color="#ff7aa2"/>
+            <stop offset="100%" stop-color="#ff477e"/>
+          </radialGradient>
+          <radialGradient id="roseCenter" cx="40%" cy="40%">
+            <stop offset="0%" stop-color="#ffe4ec"/>
+            <stop offset="70%" stop-color="#ff5f8a"/>
+            <stop offset="100%" stop-color="#c2185b"/>
+          </radialGradient>
+          <linearGradient id="leafGrad" x1="0" x2="1">
+            <stop offset="0%" stop-color="#a8e6cf"/>
+            <stop offset="100%" stop-color="var(--leaf)"/>
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <div class="message" id="msg" aria-live="polite">
+        <h2>não posso te dar ainda então fica com seu pré buquê 🌷</h2>
+        <p>eu cagaria facilmente na sua boca</p>
+      </div>
+    </div>
+
+    <button class="cta" id="btn" aria-controls="msg" aria-expanded="false">
+      <span>💌 Abrir a surpresa</span>
+    </button>
+  </div>
 
 <script>
-    const botaoSim = document.getElementById("sim");
-    const botaoNao = document.getElementById("nao");
-    const container = document.querySelector(".botoes");
+(function(){
+  const btn = document.getElementById('btn');
+  const card = document.querySelector('.card');
 
-    // Botão SIM
-    botaoSim.addEventListener("click", () => {
-        alert("A GENTE VAI CASAR UM DIA🎉🥳🥂🎂");
-        window.location.href = "https://youtu.be/vPh-GPz2rWs?si=ySIBs-dIm67lVgar&t=18";
-    });
+  // Criar pétalas caindo
+  function soltarPetalas(qtd = 80){
+    for(let i=0;i<qtd;i++){
+      const p = document.createElement('span');
+      p.className = 'petal-fall';
+      const size = 8 + Math.random()*14;
+      p.style.width = size + 'px';
+      p.style.height = (size*1.4) + 'px';
+      p.style.left = (Math.random()*100) + 'vw';
+      const dur = 6 + Math.random()*6;
+      p.style.animationDuration = dur + 's, ' + (2.5 + Math.random()*2) + 's';
+      p.style.animationDelay = (Math.random()*1.2) + 's, 0s';
+      p.style.opacity = 0.75 + Math.random()*0.25;
+      document.body.appendChild(p);
+      // Remove ao terminar
+      setTimeout(()=>p.remove(), (dur+2)*1000);
+    }
+  }
 
-    // Botão NÃO fica rodando o SIM
-    botaoNao.addEventListener("mouseover", () => {
-        // Pega posição do SIM
-        const simRect = botaoSim.getBoundingClientRect();
+  // Sonzinho opcional (suave e curto, gerado via WebAudio; não auto-toca)
+  function toqueSuave(){
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(660, ctx.currentTime);
+    o.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.5);
+    g.gain.setValueAtTime(0.0001, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.15, ctx.currentTime + 0.03);
+    g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.7);
+    o.connect(g).connect(ctx.destination);
+    o.start(); o.stop(ctx.currentTime + 0.75);
+  }
 
-        // Define um limite de movimento ao redor do SIM
-        const offsetX = (Math.random() - 0.5) * 120; // até 60px p/ lado
-        const offsetY = (Math.random() - 0.5) * 60;  // até 30px p/ cima/baixo
+  function revelar(){
+    card.classList.toggle('show');
+    const expanded = card.classList.contains('show');
+    btn.setAttribute('aria-expanded', expanded ? 'true':'false');
+    btn.firstElementChild.textContent = expanded ? '💖 Repetir a magia' : '💌 Abrir a surpresa';
 
-        botaoNao.style.position = "absolute";
-        botaoNao.style.left = `${simRect.left + simRect.width + offsetX}px`;
-        botaoNao.style.top = `${simRect.top + offsetY}px`;
-    });
+    // Efeitos
+    soltarPetalas(60 + Math.floor(Math.random()*60));
+    try{ toqueSuave(); }catch(e){}
+  }
+
+  btn.addEventListener('click', revelar);
+  document.addEventListener('keydown', (e)=>{ if(e.code === 'Space'){ e.preventDefault(); revelar(); } });
+
+  // Entrada inicial suave de pétalas
+  setTimeout(()=>soltarPetalas(25), 600);
+})();
 </script>
-
 </body>
 </html>
