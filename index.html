@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laura Linda do olho AZULL</title>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        background-color: white;
+        text-align: center;
+        margin: 0;
+    }
+    .vermelho {
+        color: red;
+        font-weight: bold;
+    }
+    .botoes {
+        display: flex;
+        gap: 20px; /* espaço inicial entre os botões */
+        margin-top: 20px;
+        position: relative;
+    }
+    button {
+        padding: 12px 30px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        background-color: black;
+        color: white;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    button:hover {
+        background-color: #333;
+        transform: scale(1.05);
+    }
+    #nao {
+        position: relative;
+    }
+</style>
+</head>
+<body>
+
+<h1><span class="vermelho">Laura Zdepski,</span>quer <span class="vermelho">concorda que não sou estranho</span>?</h1>
+
+<div class="botoes">
+    <button id="sim">SIM</button>
+    <button id="nao">NÃO</button>
+</div>
+
+<script>
+    const botaoSim = document.getElementById("sim");
+    const botaoNao = document.getElementById("nao");
+    const container = document.querySelector(".botoes");
+
+    // Botão SIM
+    botaoSim.addEventListener("click", () => {
+        alert("A GENTE VAI CASAR UM DIA🎉🥳🥂🎂");
+        window.location.href = "https://youtu.be/vPh-GPz2rWs?si=ySIBs-dIm67lVgar&t=18";
+    });
+
+    // Botão NÃO fica rodando o SIM
+    botaoNao.addEventListener("mouseover", () => {
+        // Pega posição do SIM
+        const simRect = botaoSim.getBoundingClientRect();
+
+        // Define um limite de movimento ao redor do SIM
+        const offsetX = (Math.random() - 0.5) * 120; // até 60px p/ lado
+        const offsetY = (Math.random() - 0.5) * 60;  // até 30px p/ cima/baixo
+
+        botaoNao.style.position = "absolute";
+        botaoNao.style.left = `${simRect.left + simRect.width + offsetX}px`;
+        botaoNao.style.top = `${simRect.top + offsetY}px`;
+    });
+</script>
+
+</body>
+</html>
