@@ -1,125 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Laura Zdepski 💐</title>
-<style>
-  body{
-    margin:0; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    background: radial-gradient(1200px 600px at 50% 10%, #202044 0%, #1a1a2e 40%, #0f0f1a 100%);
-    font-family: Arial, sans-serif;
-    color:white;
-    overflow:hidden;
-    text-align:center;
-  }
-  h1{
-    font-size:clamp(20px,4vw,34px);
-    margin:0 10px 20px;
-  }
-  .botoes {
-    display:flex;
-    gap:20px;
-    margin-top:20px;
-    position:relative;
-  }
-  button {
-    padding:12px 30px;
-    font-size:16px;
-    cursor:pointer;
-    border:none;
-    border-radius:8px;
-    background-color:black;
-    color:white;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    position:relative;
-  }
-  button:hover {
-    background-color:#333;
-    transform:scale(1.05);
-  }
-  #nao { position:absolute; }
-  svg{ width:min(90vw, 400px); height:auto; }
-  /* corações subindo */
-  .heart {
-    position: fixed;
-    font-size: 24px;
-    animation: rise 2s ease forwards;
-    pointer-events: none;
-  }
-  @keyframes rise {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-120px) scale(1.5); opacity: 0; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sera q merece?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0e4ff;
+            text-align: center;
+        }
+        .gift-box {
+            background-color: #ff4d4d;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+            transition: transform 0.3s;
+        }
+        .gift-box:hover {
+            transform: scale(1.1);
+        }
+        .hidden {
+            display: none;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+            font-size: 36px;
+        }
+        p {
+            color: #555;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
+    <div id="gift" class="gift-box">Clique para abrir seu presente, Laura! 🎁</div>
+    <div id="content" class="content hidden">
+        <h1>Para a idosa conservadora</h1>
+        <p>ainda não posso, mas fica a dica doq sempre vai receber</p>
+        <img src="https://ibb.co/vvXNzmFW" alt="Surpresa para Laura">
+    </div>
 
-<h1><span style="color:red">Laura Zdepski</span>, concorda que eu não sou estranho?</h1>
+    <script>
+        const giftBox = document.getElementById('gift');
+        const content = document.getElementById('content');
 
-<!-- Buquê -->
-<svg viewBox="0 0 600 520" aria-hidden="true">
-  <!-- Hastes -->
-  <g stroke="#1b8d4e" stroke-width="6" stroke-linecap="round">
-    <path d="M290,270 C285,360 290,460 300,520"/>
-    <path d="M315,270 C320,360 315,460 305,520"/>
-    <path d="M265,270 C260,355 270,460 295,520"/>
-  </g>
-  <!-- Folhas -->
-  <g fill="#2ecc71">
-    <path d="M250,330 C230,320 215,305 200,290 C230,300 250,305 270,310 Z"/>
-    <path d="M355,330 C380,320 395,305 410,290 C380,300 365,305 345,310 Z"/>
-    <path d="M295,370 C280,362 270,352 260,340 C280,350 295,352 315,355 Z"/>
-  </g>
-  <!-- Flores -->
-  <circle cx="270" cy="230" r="34" fill="pink"/>
-  <circle cx="330" cy="210" r="28" fill="hotpink"/>
-  <circle cx="240" cy="205" r="26" fill="#ff477e"/>
-  <!-- Embalagem -->
-  <path d="M210,280 L390,280 L345,430 Q300,470 255,430 Z" fill="#f2f2f2aa" stroke="#ffffff22" stroke-width="2"/>
-  <!-- Laço -->
-  <ellipse cx="300" cy="405" rx="18" ry="10" fill="red"/>
-</svg>
-
-<div class="botoes">
-  <button id="sim">SIM</button>
-  <button id="nao">NÃO</button>
-</div>
-
-<script>
-  const botaoSim = document.getElementById("sim");
-  const botaoNao = document.getElementById("nao");
-
-  // Botão SIM
-  botaoSim.addEventListener("click", () => {
-    alert("A GENTE VAI CASAR UM DIA 🎉🥳🥂🎂");
-
-    // coraçãozinho animado
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.textContent = "❤️";
-    heart.style.left = (botaoSim.offsetLeft + botaoSim.offsetWidth/2) + "px";
-    heart.style.top = (botaoSim.offsetTop - 20) + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 2000);
-
-    window.location.href = "https://youtu.be/vPh-GPz2rWs?si=ySIBs-dIm67lVgar&t=18";
-  });
-
-  // Botão NÃO foge do mouse
-  botaoNao.addEventListener("mouseover", () => {
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-    const btnWidth = botaoNao.offsetWidth;
-    const btnHeight = botaoNao.offsetHeight;
-
-    const newX = Math.random() * (windowWidth - btnWidth - 20);
-    const newY = Math.random() * (windowHeight - btnHeight - 20);
-
-    botaoNao.style.left = `${newX}px`;
-    botaoNao.style.top = `${newY}px`;
-  });
-</script>
-
+        giftBox.addEventListener('click', () => {
+            giftBox.classList.add('hidden');
+            content.classList.remove('hidden');
+        });
+    </script>
 </body>
 </html>
